@@ -51,7 +51,7 @@ def getRecentTweets(twitterHandle: str):
         res = Tweet(
             imgHtml=img.get_attribute('outerHTML'),
             timeHtml=time,
-            contentHtml=content,
+            contentHtml=str(content),
             href=href,
             tweetedByHtml=tweetedBy 
         )
