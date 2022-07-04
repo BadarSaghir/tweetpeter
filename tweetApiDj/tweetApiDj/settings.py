@@ -29,7 +29,10 @@ ALLOWED_HOSTS = [
     
     'tweet-recent.herokuapp.com',
     '0.0.0.0',
-        '127.0.0.1'
+    'localhost:8000'
+    'localhost',
+    '127.0.0.1',
+    '127.0.0.1:8000'
 ]
 
 
@@ -131,6 +134,9 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
+     'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    ),
    
     'DEFAULT_METADATA_CLASS': 'tweetApi.metadata.MyCustomMetadata'
 }
