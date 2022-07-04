@@ -17,7 +17,7 @@ XPATH_IMG = "/html/body/div[1]/div/div/div[2]/main/div/div/div/div[1]/div/div[2]
 
 XPATH_TIME="/html/body/div[1]/div/div/div[2]/main/div/div/div/div[1]/div/div[2]/div/div/section/div/div/div[1]/div/div/div/article/div/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[2]/div/div[3]/a/time"
 
-XPATH_CONTENT='//*[@id="react-root"]/div/div/div[2]/main/div/div/div/div/div/div[2]/div/div/section/div/div/div[1]/div/div/div/article/div/div/div/div[2]/div[2]/div[2]'
+XPATH_CONTENT='/html/body/div[1]/div/div/div[2]/main/div/div/div/div[1]/div/div[2]/div/div/section/div/div/div[2]/div/div/div/article/div/div/div/div[2]/div[2]/div[2]'
 
 XPATH_TWEETED_BY = "/html/body/div[1]/div/div/div[2]/main/div/div/div/div[1]/div/div[2]/div/div/section/div/div/div[1]/div/div/div/article/div/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[1]/div/a/div/div[1]/span/span"
 
@@ -79,10 +79,10 @@ def getRecentTweets(twitterHandle: str):
     
     # tweets = browser.find_element_by_xpath(XPATH_OF_RECENT_TWEETS)
     try:
-        WebDriverWait(browser, 30).until( EC.presence_of_element_located((By.XPATH, XPATH_IMG)))
+        WebDriverWait(browser, 10).until( EC.presence_of_element_located((By.XPATH, XPATH_IMG)))
         img = browser.find_element_by_xpath(XPATH_IMG)
         time =browser.find_element_by_xpath(XPATH_TIME).text
-        content = browser.find_element_by_xpath(XPATH_CONTENT).get_attribute("outerHTML")
+        content = browser.find_element_by_xpath(XPATH_CONTENT).get_attribute("innerHTML")
         tweetedBy=browser.find_element_by_xpath(XPATH_TWEETED_BY).text
         href=browser.find_element_by_xpath(XPATH_HREF).get_attribute('href')
         res = Tweet(
