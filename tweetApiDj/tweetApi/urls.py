@@ -2,10 +2,10 @@
 
 from django.urls import path
 
-from tweetApi.views import TodoListApiView
+from tweetApi.views import TweetAppView
 
 
 urlpatterns = [
-    path("<str:id>/",TodoListApiView.as_view())
+    path("<str:id>/",TweetAppView.as_view())
 
 ]

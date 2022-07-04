@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .selenium.getApis import getRecentTweets
 # Create your views here.
-class TodoListApiView(APIView):
+class TweetAppView(APIView):
     # 1. get recent tweet
     def get(self, request,id:str, *args, **kwargs):
         '''
