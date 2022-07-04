@@ -1,9 +1,11 @@
+import os
 from typing import Literal
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.chrome.options import Options
 
 XPATH_OF_RECENT_TWEETS="/html/body/div[1]/div/div/div[2]/main/div/div/div/div[1]/div/div[2]/div/div/section/div/div/div[1]/div/div/div"
 XPATH_IMG = "/html/body/div[1]/div/div/div[2]/main/div/div/div/div[1]/div/div[2]/div/div/section/div/div/div[1]/div/div/div/article/div/div/div/div[2]/div[1]/div/div/div/div/div[2]/div/div[2]/div/a/div[3]/div/div[2]/div/div"
@@ -37,7 +39,14 @@ class Tweet:
 
 
 def getRecentTweets(twitterHandle: str):
-    browser = webdriver.Chrome()
+
+    options = Options()
+    options.binary_location = os.environ.get('GOOGLE_CHROME_BIN')
+    options.add_argument('--headless')
+    options.add_argument('--disable-gpu')
+    options.add_argument('--no-sandbox')
+    
+    browser = webdriver.Chrome(executable_path=str(os.environ.get('CHROMEDRIVER_PATH')), chrome_options=options)
     browser.get(f'https://twitter.com/{twitterHandle}')
     
     # tweets = browser.find_element_by_xpath(XPATH_OF_RECENT_TWEETS)
