@@ -8,6 +8,7 @@ django = "==3.2.12"
 selenium = "==4.0.0a1"
 djangorestframework = "*"
 gunicorn = "*"
+webdriver-manager = "*"
 
 [dev-packages]
 
