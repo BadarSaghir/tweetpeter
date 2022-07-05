@@ -82,7 +82,7 @@ def getRecentTweets(twitterHandle: str):
         WebDriverWait(browser, 10).until( EC.presence_of_element_located((By.XPATH, XPATH_IMG)))
         img = browser.find_element_by_xpath(XPATH_IMG)
         time =browser.find_element_by_xpath(XPATH_TIME).text
-        content = browser.find_element_by_xpath(XPATH_CONTENT).get_attribute("innerHTML")
+        content = browser.find_element_by_xpath(XPATH_CONTENT).text
         tweetedBy=browser.find_element_by_xpath(XPATH_TWEETED_BY).text
         href=browser.find_element_by_xpath(XPATH_HREF).get_attribute('href')
         res = Tweet(
