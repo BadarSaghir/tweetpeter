@@ -13,7 +13,7 @@ class TweetAppView(APIView):
         '''
         tweet = getRecentTweets(id)
         print(tweet)
-        # serializer = SeleniumSerializer(tweet, many=FALSE)
+       
         
         return Response(tweet, status=status.HTTP_200_OK)
 
